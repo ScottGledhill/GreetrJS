@@ -18,8 +18,35 @@
     es: 'Saludos'
   };
 
+  var logMessages = {
+    en: 'Logged in',
+    es: 'Iniciar sesión'
+  };
 
-  Greetr.prototype = {};
+  Greetr.prototype = {
+    fullname: function() {
+      return this.firstName + ' ' + this.lastname;
+    },
+
+    validate: function() {
+      if (supportedLangs.indexOf(this.language) === -1) {
+        throw "Invalid language";
+      }
+    },
+
+    greeting: function() {
+      return greetings[this.language] + ' ' + this.firstName + '!';
+    },
+
+    formalGreeting: function() {
+      return formatlGreetings[this.language] + ', ' + this.fullName();
+    }
+
+    greet: function(formal) {
+
+    }
+
+  };
 
   Greetr.init = function(firstName, lastName, language) {
 
